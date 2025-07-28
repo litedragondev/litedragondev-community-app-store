@@ -1,6 +1,6 @@
 version: 1.8.4
 
-id: anything-llm
+id: litedragondev-anything-llm
 name: AnythingLLM
 description: The all-in-one Desktop & Docker AI application with built-in RAG, AI agents, No-code agent builder, MCP compatibility, and more.
 tagline: Loacl AI assistant with Ollama support
