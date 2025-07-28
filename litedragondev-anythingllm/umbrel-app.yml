@@ -2,7 +2,7 @@ manifestVersion: 1
 id: litedragondev-anythingllm
 name: AnythingLLM
 tagline: Local AI platform with Ollama support
-icon: https://svgur.com/i/mvA.svg
+icon: https://icons.duckduckgo.com/ip2/docs.anythingllm.com.ico
 category: AI
 version: "1.8.4"
 port: 3001
