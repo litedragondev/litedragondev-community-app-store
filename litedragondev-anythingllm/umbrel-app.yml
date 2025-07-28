@@ -1,16 +1,36 @@
-version: 1.8.4
-
-id: litedragondev-anything-llm
+manifestVersion: 1
+id: anything-llm
 name: AnythingLLM
-description: The all-in-one Desktop & Docker AI application with built-in RAG, AI agents, No-code agent builder, MCP compatibility, and more.
-tagline: Loacl AI assistant with Ollama support
+version: "1.0.0"
+tagline: Private ChatGPT with your documents
+icon: https://raw.githubusercontent.com/<TON-UTILISATEUR>/community-app-store/main/apps/anything-llm/icon.png
+description: |
+  AnythingLLM lets you run your own private ChatGPT that can read your files and answer questions about them, using Ollama or other local models.
+
 developer: Mintplex Labs
-website: https://anythingllm.com/
+website: https://github.com/Mintplex-Labs/anything-llm
+dependencies: []
 repo: https://github.com/Mintplex-Labs/anything-llm
 support: https://github.com/Mintplex-Labs/anything-llm/issues
-category: AI
-type: app
-releaseNotes: AnythingLLM + Ollama integration
 port: 3001
-permissions:
-  - STORAGE
+
+services:
+  app:
+    image: mintplexlabs/anythingllm:latest
+    restart: unless-stopped
+    environment:
+      JWT_SECRET: "super_secure_string_1234567890"
+      LLM_PROVIDER: "ollama"
+      OLLAMA_BASE_PATH: "http://host.docker.internal:11434"
+      OLLAMA_MODEL_PREF: "llama2"
+      EMBEDDING_ENGINE: "ollama"
+      EMBEDDING_BASE_PATH: "http://host.docker.internal:11434"
+      EMBEDDING_MODEL_PREF: "nomic-embed-text:latest"
+      VECTOR_DB: "lancedb"
+    volumes:
+      - anythingllm-storage:/app/server/storage
+    ports:
+      - 3001:3001
+
+volumes:
+  anythingllm-storage:
