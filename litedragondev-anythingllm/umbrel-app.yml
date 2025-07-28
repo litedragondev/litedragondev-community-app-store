@@ -1,36 +1,24 @@
 manifestVersion: 1
-id: anything-llm
+id: litedragondev-anythingllm
 name: AnythingLLM
-version: "1.0.0"
-tagline: Private ChatGPT with your documents
-icon: https://raw.githubusercontent.com/<TON-UTILISATEUR>/community-app-store/main/apps/anything-llm/icon.png
-description: |
-  AnythingLLM lets you run your own private ChatGPT that can read your files and answer questions about them, using Ollama or other local models.
-
+tagline: Local AI platform with Ollama support
+icon: https://svgur.com/i/mvA.svg
+category: AI
+version: "1.8.4"
+port: 3001
+description: >-
+  The all-in-one Desktop & Docker AI application with built-in RAG, AI agents, No-code agent builder, MCP compatibility, and more.
+  
 developer: Mintplex Labs
-website: https://github.com/Mintplex-Labs/anything-llm
-dependencies: []
+website: https://anythingllm.com
+submitter: Litedragondev
+submission: https://github.com/litedragondev/litedragondev-community-app-store/litedragondev-anythingllm
 repo: https://github.com/Mintplex-Labs/anything-llm
 support: https://github.com/Mintplex-Labs/anything-llm/issues
-port: 3001
-
-services:
-  app:
-    image: mintplexlabs/anythingllm:latest
-    restart: unless-stopped
-    environment:
-      JWT_SECRET: "super_secure_string_1234567890"
-      LLM_PROVIDER: "ollama"
-      OLLAMA_BASE_PATH: "http://host.docker.internal:11434"
-      OLLAMA_MODEL_PREF: "llama2"
-      EMBEDDING_ENGINE: "ollama"
-      EMBEDDING_BASE_PATH: "http://host.docker.internal:11434"
-      EMBEDDING_MODEL_PREF: "nomic-embed-text:latest"
-      VECTOR_DB: "lancedb"
-    volumes:
-      - anythingllm-storage:/app/server/storage
-    ports:
-      - 3001:3001
-
-volumes:
-  anythingllm-storage:
+gallery:
+releaseNotes: >-
+  Add what's new in the latest version of your app here.
+dependencies: []
+path: ""
+defaultUsername: ""
+defaultPassword: ""
