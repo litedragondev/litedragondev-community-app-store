@@ -15,7 +15,7 @@ services:
       DB_PASSWORD: koelpassword
       APP_ENV: production
     volumes:
-      - ${UMBREL_APP_DATA_DIR}/music:/music
+      - /home/umbrel/umbrel/home/Downloads:/music
       - ${UMBREL_APP_DATA_DIR}/uploads:/var/www/html/storage
     depends_on:
       - koel-db
