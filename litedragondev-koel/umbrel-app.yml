@@ -1,0 +1,16 @@
+id: "koel"
+name: "Koel"
+version: "1.0.0"
+releaseNotes: "Koel pour Umbrel"
+description: "Serveur de streaming musical personnel avec une interface moderne, noire et minimaliste."
+developer: "Phanan"
+website: "https://koel.dev/"
+repo: "https://github.com/phanan/koel"
+support: "https://github.com/phanan/koel/issues"
+port: 4810
+gallery:
+  - "https://koel.dev/img/screenshot.png"
+dependencies: []
+path: ""
+defaultUsername: "admin@umbrel.local"
+defaultPassword: "changeme"
