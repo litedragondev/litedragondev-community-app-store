@@ -1,16 +1,24 @@
-id: "koel"
-name: "Koel"
+manifestVersion: 1
+id: litedragondev-koel
+name: Koel
+tagline: Stream your music library from anywhere
+icon: ./assets/icon.png
+category: Media
 version: "1.0.0"
-releaseNotes: "Koel pour Umbrel"
-description: "Serveur de streaming musical personnel avec une interface moderne, noire et minimaliste."
-developer: "Phanan"
-website: "https://koel.dev/"
-repo: "https://github.com/phanan/koel"
-support: "https://github.com/phanan/koel/issues"
 port: 4810
-gallery:
-  - "https://koel.dev/img/screenshot.png"
+description: >-
+  Koel is a personal music streaming server with a sleek, modern interface. 
+  It lets you access and stream your personal music collection from anywhere.
+  
+developer: Phanan
+website: https://koel.dev
+submitter: Litedragondev
+submission: https://github.com/litedragondev/litedragondev-community-app-store/tree/main/litedragondev-koel
+repo: https://github.com/phanan/koel
+support: https://github.com/phanan/koel/issues
+releaseNotes: >-
+  Initial version of Koel for Umbrel with MySQL backend support and custom port 4810.
 dependencies: []
 path: ""
-defaultUsername: "admin@umbrel.local"
-defaultPassword: "changeme"
+defaultUsername: ""
+defaultPassword: ""
