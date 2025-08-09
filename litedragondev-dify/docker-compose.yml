@@ -1,0 +1,107 @@
+version: "3.7"
+
+services:
+  app_proxy:
+    image: getumbrel/app-proxy:latest
+    restart: on-failure
+    environment:
+      PROXY_APP_ID: "mystore-dify"
+      APP_HOST: web
+      APP_PORT: 3000
+
+  web:
+    image: langgenius/dify-web:0.6.13
+    restart: on-failure
+    environment:
+      PORT: 3000
+      CONSOLE_API_URL: ""
+      CONSOLE_WEB_URL: ""
+      APP_API_URL: ""
+      APP_WEB_URL: ""
+    depends_on:
+      - api
+    networks:
+      - app_network
+
+  api:
+    image: langgenius/dify-api:0.6.13
+    restart: on-failure
+    environment:
+      LOG_LEVEL: INFO
+      SECRET_KEY: dW2Q+9EDERi5tvirhLPNDtgdCuOXJLnHNLsJXRTvzaluJsoVxVfAT/PU
+      DB_USERNAME: postgres
+      DB_PASSWORD: Maxime.0210
+      DB_HOST: db
+      DB_PORT: 5432
+      DB_DATABASE: dify
+      REDIS_HOST: redis
+      REDIS_PORT: 6379
+      REDIS_PASSWORD: difyai123456
+      VECTOR_STORE: weaviate
+      WEAVIATE_ENDPOINT: http://weaviate:8080
+      WEAVIATE_API_KEY: WVF5YThaHlkYwhGUSmCRgsX3tD5ngdN8pkih
+    depends_on:
+      - db
+      - redis
+      - weaviate
+    networks:
+      - app_network
+
+  worker:
+    image: langgenius/dify-api:0.6.13
+    restart: on-failure
+    command: ["celery", "-A", "app.celery", "worker", "--loglevel=INFO"]
+    environment:
+      DB_USERNAME: postgres
+      DB_PASSWORD: Maxime.0210
+      DB_HOST: db
+      DB_PORT: 5432
+      DB_DATABASE: dify
+      REDIS_HOST: redis
+      REDIS_PORT: 6379
+      REDIS_PASSWORD: difyai123456
+      VECTOR_STORE: weaviate
+      WEAVIATE_ENDPOINT: http://weaviate:8080
+      WEAVIATE_API_KEY: WVF5YThaHlkYwhGUSmCRgsX3tD5ngdN8pkih
+    depends_on:
+      - db
+      - redis
+      - weaviate
+    networks:
+      - app_network
+
+  db:
+    image: postgres:15-alpine
+    restart: on-failure
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: Maxime.0210
+      POSTGRES_DB: dify
+    volumes:
+      - ${APP_DATA_DIR}/db:/var/lib/postgresql/data
+    networks:
+      - app_network
+
+  redis:
+    image: redis:6-alpine
+    restart: on-failure
+    command: redis-server --requirepass difyai123456
+    volumes:
+      - ${APP_DATA_DIR}/redis:/data
+    networks:
+      - app_network
+
+  weaviate:
+    image: semitechnologies/weaviate:1.19.0
+    restart: on-failure
+    environment:
+      QUERY_DEFAULTS_LIMIT: 20
+      AUTHENTICATION_ANONYMOUS_ACCESS_ENABLED: 'true'
+    volumes:
+      - ${APP_DATA_DIR}/weaviate:/var/lib/weaviate
+    networks:
+      - app_network
+
+networks:
+  app_network:
+    driver: bridge
