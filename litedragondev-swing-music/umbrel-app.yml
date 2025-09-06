@@ -1,9 +1,9 @@
 manifestVersion: 1
 id: litedragondev-swing-music
 name: Swing Music
-tagline: Local AI platform with Ollama support
+tagline: Beautiful self-hosted music player
 icon: https://avatars.githubusercontent.com/u/125947721?s=280&v=4
-category: AI
+category: Media
 version: "1.8.4"
 port: 3001
 description: >-
