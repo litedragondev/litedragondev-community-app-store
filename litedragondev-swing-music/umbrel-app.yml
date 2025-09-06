@@ -1,0 +1,24 @@
+manifestVersion: 1
+id: litedragondev-swing-music
+name: Swing Music
+tagline: Local AI platform with Ollama support
+icon: https://avatars.githubusercontent.com/u/125947721?s=280&v=4
+category: AI
+version: "1.8.4"
+port: 3001
+description: >-
+  Swing Music is a beautiful, self-hosted music player for your local audio files. Like a cooler Spotify ... but bring your own music.
+  
+developer: SwingMX
+website: https://swingmx.com
+submitter: Litedragondev
+submission: https://github.com/litedragondev/litedragondev-community-app-store/litedragondev-swing-music
+repo: https://github.com/swingmx/swingmusic
+support: https://github.com/swingmx/swingmusic/issues
+gallery:
+releaseNotes: >-
+  Add what's new in the latest version of your app here.
+dependencies: []
+path: ""
+defaultUsername: ""
+defaultPassword: ""
