@@ -1,24 +1,10 @@
-version: '3.8'
-
 services:
   swingmusic:
-    image: ghcr.io/swingmx/swingmusic:v1.4.8
+    image: ghcr.io/swingmx/swingmusic:latest
     container_name: swingmusic
+    volumes:
+      - /umbrel/home/Downloads:/music
+      - ${APP_DATA_DIR}/data:/config
     ports:
       - "1970:1970"
-    volumes:
-      - ${APP_DATA_DIR}/data:/config
-      - /umbrel/home/Downloads/downtify:/music
     restart: unless-stopped
-    cpu_shares: 2048  # High CPU priority
-    networks:
-      - default
-    user: "1000:1000"
-    environment:
-      - PUID=1000
-      - PGID=1000
-      - TZ=${TZ:-UTC}
-
-networks:
-  default:
-    driver: bridge
